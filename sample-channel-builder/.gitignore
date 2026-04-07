@@ -1,0 +1,6 @@
+.env
+node_modules/
+bun.lock
+
+# Local Claude Code settings (machine-specific)
+.claude/

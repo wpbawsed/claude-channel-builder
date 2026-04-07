@@ -1,0 +1,10 @@
+.env
+node_modules/
+bun.lock
+
+# Local Claude Code settings (machine-specific)
+.claude/
+
+# Debug scripts (not for production)
+debug-notion.ts
+find-db.ts

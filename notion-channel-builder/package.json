@@ -1,0 +1,15 @@
+{
+  "name": "notion-channel-builder",
+  "version": "0.1.0",
+  "description": "Claude Code Channel server — bridges Notion database polling to Claude Code sessions via MCP",
+  "type": "module",
+  "scripts": {
+    "start": "bun run notion-channel.ts",
+    "dev": "bun --watch run notion-channel.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@notionhq/client": "^2.2.15",
+    "zod": "^3.22.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "slack": {
+      "command": "bun",
+      "args": ["./slack-channel.ts"]
+    }
+  }
+}

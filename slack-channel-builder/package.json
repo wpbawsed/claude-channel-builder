@@ -1,0 +1,15 @@
+{
+  "name": "slack-channel-builder",
+  "version": "0.1.0",
+  "description": "Claude Code Channel server — bridges Slack Socket Mode to Claude Code sessions via MCP",
+  "type": "module",
+  "scripts": {
+    "start": "bun run slack-channel.ts",
+    "dev": "bun --watch run slack-channel.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@slack/bolt": "^4.0.0",
+    "zod": "^3.22.0"
+  }
+}
