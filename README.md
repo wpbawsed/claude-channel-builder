@@ -22,11 +22,12 @@ Claude Code Channel 是 Claude Code 的實驗性功能，讓你透過自訂的 M
 
 ## 內容
 
-| 目錄 | 說明 |
-| --- | --- |
-| [`slack-channel-builder/`](./slack-channel-builder/) | 透過 Slack Socket Mode 與 Claude 雙向對話，支援 @Bot mention 及 DM |
+| 目錄                                                   | 說明                                                                   |
+| ------------------------------------------------------ | ---------------------------------------------------------------------- |
+| [`slack-channel-builder/`](./slack-channel-builder/)   | 透過 Slack Socket Mode 與 Claude 雙向對話，支援 @Bot mention 及 DM     |
 | [`notion-channel-builder/`](./notion-channel-builder/) | Polling Notion Database，自動將 `Ready` 狀態的任務卡片轉交 Claude 執行 |
-| [`sample-channel-builder/`](./sample-channel-builder/) | HTTP Webhook 範本，適合快速自訂或整合其他系統 |
+| [`jira-channel-builder/`](./jira-channel-builder/)     | Jira Webhook 即時觸發，自動將指定 issue 轉交 Claude 執行並回寫 comment |
+| [`sample-channel-builder/`](./sample-channel-builder/) | HTTP Webhook 範本，適合快速自訂或整合其他系統                          |
 
 ## 前置需求
 
@@ -67,15 +68,27 @@ claude --dangerously-load-development-channels server:webhook
 
 → 詳細說明請見 [sample-channel-builder/README.md](./sample-channel-builder/README.md)
 
+### Jira
+
+```bash
+cd jira-channel-builder
+cp .env.example .env   # 填入 JIRA_BASE_URL、JIRA_EMAIL、JIRA_API_TOKEN、JIRA_JQL
+bun install
+set -a && source .env && set +a
+claude --dangerously-load-development-channels server:jira
+```
+
+→ 詳細 Jira 設定與操作步驟請見 [jira-channel-builder/README.md](./jira-channel-builder/README.md)
+
 ## 架構說明
 
 每個 Channel server 都是一個標準 MCP server，透過 `stdio` transport 與 Claude Code 溝通，並宣告以下 capabilities：
 
-| Capability | 說明 |
-| --- | --- |
-| `claude/channel` | 宣告為 channel，接收外部訊息 |
+| Capability                  | 說明                                 |
+| --------------------------- | ------------------------------------ |
+| `claude/channel`            | 宣告為 channel，接收外部訊息         |
 | `claude/channel/permission` | 選填，啟用工具批准中繼（Slack 支援） |
-| `tools` (`reply`) | Claude 用此工具將回覆送回外部管道 |
+| `tools` (`reply`)           | Claude 用此工具將回覆送回外部管道    |
 
 ## 延伸閱讀
 

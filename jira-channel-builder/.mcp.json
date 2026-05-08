@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jira": {
+      "command": "bun",
+      "args": ["./jira-channel.ts"]
+    }
+  }
+}

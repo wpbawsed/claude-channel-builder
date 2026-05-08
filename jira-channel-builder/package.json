@@ -1,0 +1,13 @@
+{
+  "name": "jira-channel-builder",
+  "version": "0.1.0",
+  "description": "Claude Code Channel server — bridges Jira issue polling to Claude Code sessions via MCP",
+  "type": "module",
+  "scripts": {
+    "start": "bun run jira-channel.ts",
+    "dev": "bun --watch run jira-channel.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
